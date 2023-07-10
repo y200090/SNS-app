@@ -1,16 +1,16 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import { AuthContextProvider } from '../contexts/AuthContext'
+import { SupabaseAuthContextProvider } from '../contexts/SupabaseAuthContext'
 
 export const AppProvider = ({ children }) => {
   return (
     <ChakraProvider>
-      <AuthContextProvider>
+      <SupabaseAuthContextProvider>
         <BrowserRouter>
-          {children}
+          { children }
         </BrowserRouter>
-      </AuthContextProvider>
+      </SupabaseAuthContextProvider>
     </ChakraProvider>
   )
 }

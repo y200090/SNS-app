@@ -1,12 +1,30 @@
+import { Suspense } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+
+import { Center, Spinner } from "@chakra-ui/react";
+
 import { Chat, Home } from "../pages";
 
 const App = () => {
   return (
     <>
-      <Outlet />
+      <Suspense
+        fallback={
+          <Center h='100vh' w='100vw'>
+            <Spinner
+              thickness='4px'
+              speed='0.65s'
+              emptyColor='gray.200'
+              color='blue.500'
+              size='xl'
+            />
+          </Center>
+        }
+      >
+        <Outlet />
+      </Suspense>
     </>
-  )
+  );
 }
 
 export const privateRoutes = [
@@ -14,10 +32,6 @@ export const privateRoutes = [
     path: '/',
     element: <App />,
     children: [
-      {
-        index: true,
-        element: <Navigate to='/home' replace />,
-      },
       {
         path: 'home',
         element: <Home />,
@@ -28,8 +42,8 @@ export const privateRoutes = [
       },
       {
         path: '*',
-        element: <Navigate to='/home' />,
+        element: <Navigate to='home' replace />,
       },
-    ]
-  }
+    ],
+  },
 ];

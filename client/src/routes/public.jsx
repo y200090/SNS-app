@@ -1,21 +1,23 @@
 import { Navigate } from "react-router-dom";
-import { Landing, Login, Register } from "../pages";
+
+import { Landing, Login } from "../pages";
 
 export const publicRoutes = [
   {
     path: '/',
-    element: <Landing />,
-  },
-  {
-    path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/register',
-    element: <Register />,
-  },
-  {
-    path: '/*',
-    element: <Navigate to='/login' />,
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: '*',
+        element: <Navigate to='login' replace />,
+      },
+    ],
   },
 ];

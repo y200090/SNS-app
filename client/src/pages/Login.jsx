@@ -1,6 +1,7 @@
 import { Button, Card, CardBody, Container, FormControl, FormLabel, Heading, Input, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { useSupabaseAuth } from '../hooks/useSupabaseAuth'
+import { useSupabaseAuth } from '../contexts/SupabaseAuthContext';
+// import { useSupabaseAuth } from '../hooks/useSupabaseAuth'
 
 const Login = () => {
   const [ email, setEmail ] = useState('');
